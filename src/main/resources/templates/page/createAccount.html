@@ -1,10 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Compte</title>
-</head>
-<body>
-
-</body>
+    <head>
+        <meta charset="UTF-8">
+        <title>Login</title>
+    </head>
+    <body>
+    <form action="/createAccount" method="post">
+        <p><input name="username" placeholder="Username"></p>
+        <p><input name="name" placeholder="Nom"></p>
+        <p><input name="prenom" placeholder="Prenom"></p>
+        <p><input name="password" placeholder="Password" type="password"></p>
+        <p><input name="password-confirm" placeholder="Confirmation" type="password"></p>
+        <p><input type="submit" value="Connexion"></p>
+        <p><a href="/loginView">Creez un compte</a></p>
+    </form>
+    </body>
 </html>
