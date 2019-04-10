@@ -13,7 +13,7 @@ class UserController {
     }
 
     @GetMapping("/loginView")
-    fun login(): String {
+    fun loginView(): String {
         return "page/login"
     }
 
