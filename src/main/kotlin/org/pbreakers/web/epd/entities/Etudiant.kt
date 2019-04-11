@@ -10,7 +10,9 @@ import javax.persistence.Id
 data class Etudiant(
     @Id @GeneratedValue val id: Long,
     val nom: String,
-    val dateNaissance: Date,
+    val dateNaissance: Date?,
     val email: String,
     val photo: String
-) : Serializable
+) : Serializable {
+    constructor(): this(0, "", null, "", "")
+}
