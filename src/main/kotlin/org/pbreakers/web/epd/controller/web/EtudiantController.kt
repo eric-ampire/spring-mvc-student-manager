@@ -25,7 +25,7 @@ class EtudiantController {
 
         // Avant de retourner la vue, on ajoute les informations dans le model
         // comme ca ces information serons disponible dans la vue
-        model.addAttribute("etudiants", pageEtudiants)
+        model.addAttribute("pageEtudiants", pageEtudiants)
         return "index"
     }
 }
