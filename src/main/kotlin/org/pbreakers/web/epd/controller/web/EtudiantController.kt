@@ -6,6 +6,7 @@ import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Controller
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.RequestMapping
+import org.springframework.web.bind.annotation.RequestMethod
 import org.springframework.web.bind.annotation.RequestParam
 
 @Controller
@@ -35,5 +36,10 @@ class EtudiantController {
         model.addAttribute("currentPage", page)
         model.addAttribute("mc", motCles)
         return "index"
+    }
+
+    @RequestMapping("/form")
+    fun showForm(): String {
+        return "form"
     }
 }
