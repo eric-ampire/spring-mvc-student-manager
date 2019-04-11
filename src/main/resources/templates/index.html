@@ -22,7 +22,7 @@
                 </thead>
 
                 <tbody>
-                <tr th:each="etudiant:${etudiants}">
+                <tr th:each="etudiant:${pageEtudiants.content}">
                     <td th:text="${etudiant.id}"></td>
                     <td th:text="${etudiant.nom}"></td>
                     <td th:text="${etudiant.email}"></td>
@@ -31,7 +31,14 @@
                 </tr>
                 </tbody>
             </table>
-    </body>
         </div>
 
+        <div class="container">
+            <ul class="nav nav-pills">
+                <li th:each="number:${pageNumber}" th:class="${number == currentPage} ? active : ''">
+                    <a th:text="${number}" th:href="@{index(page=${number})}"></a>
+                </li>
+            </ul>
+        </div>
+    </body>
 </html>
