@@ -1,6 +1,7 @@
 package org.pbreakers.web.epd.controller.web
 
 import org.pbreakers.web.epd.dao.EtudiantRepository
+import org.pbreakers.web.epd.entities.Etudiant
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.stereotype.Controller
@@ -39,7 +40,10 @@ class EtudiantController {
     }
 
     @RequestMapping("/form")
-    fun showForm(): String {
+    fun showForm(model: Model): String {
+        val etudiant = Etudiant()
+
+        model.addAttribute("etudiant", etudiant)
         return "form"
     }
 }
