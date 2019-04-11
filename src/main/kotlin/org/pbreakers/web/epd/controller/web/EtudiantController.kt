@@ -21,11 +21,16 @@ class EtudiantController {
     fun index(model: Model, @RequestParam(name = "page", defaultValue = "0") page: Int): String {
 
         // Get page of student
-        val pageEtudiants = etudiantRepository.findAll(PageRequest(page, 5))
+        val pageEtudiants = etudiantRepository.findAll(PageRequest(page, 4))
+
+        // List content the number of each page
+        val pagesNumber = (0 until pageEtudiants.totalPages).toList()
 
         // Avant de retourner la vue, on ajoute les informations dans le model
         // comme ca ces information serons disponible dans la vue
         model.addAttribute("pageEtudiants", pageEtudiants)
+        model.addAttribute("pageNumber", pagesNumber)
+        model.addAttribute("currentPage", page)
         return "index"
     }
 }
