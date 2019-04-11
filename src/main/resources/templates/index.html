@@ -6,8 +6,24 @@
         <link rel="stylesheet" type="text/css"
               href="../static/css/bootstrap.min.css"
               th:href="@{/css/bootstrap.min.css}"/>
+
+        <style>
+            .space {
+                margin-top: 40px;
+            }
+        </style>
     </head>
     <body>
+        <div class="container space">
+            <form th:action="@{index}" method="get">
+                <div class="form-group">
+                    <label>Mot cles</label>
+                    <input type="text" name="motCle"/>
+                    <button type="submit">Chercher</button>
+                </div>
+            </form>
+        </div>
+
         <div class="container">
             <h1>Liste des etudiants</h1>
             <table class="table table-striped">
@@ -36,7 +52,7 @@
         <div class="container">
             <ul class="nav nav-pills">
                 <li th:each="number:${pageNumber}" th:class="${number == currentPage} ? active : ''">
-                    <a th:text="${number}" th:href="@{index(page=${number})}"></a>
+                    <a th:text="${number}" th:href="@{index(page=${number}, motCle=${mc})}"></a>
                 </li>
             </ul>
         </div>
