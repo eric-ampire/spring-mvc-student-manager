@@ -18,19 +18,22 @@ class EtudiantController {
 
     // Pour acceder a ce l'index il faut utiliser l'url "localhost:port/etudiants/index"
     @RequestMapping("/index")
-    fun index(model: Model, @RequestParam(name = "page", defaultValue = "0") page: Int): String {
+    fun index(model: Model,
+              @RequestParam(name = "page", defaultValue = "0") page: Int,
+              @RequestParam(name = "motCle", defaultValue = "") motCles: String): String {
 
         // Get page of student
-        val pageEtudiants = etudiantRepository.findAll(PageRequest(page, 4))
+        val pageEtudiants = etudiantRepository.chercherEtudiant("%$motCles%", PageRequest(page, 4))
 
         // List content the number of each page
-        val pagesNumber = (0 until pageEtudiants.totalPages).toList()
+        val pagesNumber = (1 until pageEtudiants.totalPages).toList()
 
         // Avant de retourner la vue, on ajoute les informations dans le model
         // comme ca ces information serons disponible dans la vue
         model.addAttribute("pageEtudiants", pageEtudiants)
         model.addAttribute("pageNumber", pagesNumber)
         model.addAttribute("currentPage", page)
+        model.addAttribute("mc", motCles)
         return "index"
     }
 }
