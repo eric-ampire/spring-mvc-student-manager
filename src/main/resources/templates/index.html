@@ -23,7 +23,7 @@
             <form th:action="@{index}" method="get">
                 <div class="form-group">
                     <label>Mot cles</label>
-                    <input type="text" name="motCle"/>
+                    <input type="text" name="motCle" th:value="${mc}"/>
                     <button type="submit">Chercher</button>
                 </div>
             </form>

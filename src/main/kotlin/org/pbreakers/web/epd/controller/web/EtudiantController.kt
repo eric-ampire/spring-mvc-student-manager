@@ -29,7 +29,7 @@ class EtudiantController {
         val pageEtudiants = etudiantRepository.chercherEtudiant("%$motCles%", PageRequest(page, 4))
 
         // List content the number of each page
-        val pagesNumber = (1 until pageEtudiants.totalPages).toList()
+        val pagesNumber = (0 until pageEtudiants.totalPages).toList()
 
         // Avant de retourner la vue, on ajoute les informations dans le model
         // comme ca ces information serons disponible dans la vue
