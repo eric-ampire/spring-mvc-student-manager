@@ -57,7 +57,7 @@
         <div class="container">
             <ul class="nav nav-pills">
                 <li th:each="number:${pageNumber}" th:class="${number == currentPage} ? active : ''">
-                    <a th:text="${number}" th:href="@{index(page=${number}, motCle=${mc})}"></a>
+                    <a th:text="${number}" th:href="@{/(page=${number}, motCle=${mc})}"></a>
                 </li>
             </ul>
         </div>
