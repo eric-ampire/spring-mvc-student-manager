@@ -19,7 +19,7 @@ class SpringDemoApplication
 fun main(args: Array<String>) {
 	runApplication<SpringDemoApplication>(*args)
 
-	val token = "1162565503:AAEQYJEp5P9wna6IZC4Amn7I2IGuMQnJRmQ"
+	val token = "1162565503:AAGMDR97qHJAaVsDetB2CVqLJb9ZB5tIvbU"
 	val username = "@gdg_assistant_bot"
 
 	Bot.createPolling(username, token).apply {
