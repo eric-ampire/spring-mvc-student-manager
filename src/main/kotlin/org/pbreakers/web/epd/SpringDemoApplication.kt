@@ -1,5 +1,10 @@
 package org.pbreakers.web.epd
 
+import com.elbekD.bot.Bot
+import org.pbreakers.web.epd.Message.GDG_ABOUT_MESSAGE_EN
+import org.pbreakers.web.epd.Message.GDG_ABOUT_MESSAGE_FR
+import org.pbreakers.web.epd.Message.POLICY_MESSAGE_EN
+import org.pbreakers.web.epd.Message.POLICY_MESSAGE_FR
 import org.pbreakers.web.epd.dao.EtudiantRepository
 import org.pbreakers.web.epd.entities.Etudiant
 import org.springframework.boot.autoconfigure.SpringBootApplication
@@ -13,4 +18,25 @@ class SpringDemoApplication
 
 fun main(args: Array<String>) {
 	runApplication<SpringDemoApplication>(*args)
+
+	val token = "1162565503:AAEQYJEp5P9wna6IZC4Amn7I2IGuMQnJRmQ"
+	val username = "@gdg_assistant_bot"
+
+	Bot.createPolling(username, token).apply {
+		setBotCommandListener(this)
+		start()
+	}
+}
+
+private fun setBotCommandListener(bot: Bot) {
+	bot.run {
+		onCommand("/start") { msg, _ ->
+			bot.sendMessage(msg.chat.id, "Hey ${msg.chat.first_name} ${msg.chat.last_name}")
+		}
+
+		onCommand("/gdg_policy_en") { msg, _ -> bot.sendMessage(msg.chat.id, POLICY_MESSAGE_EN) }
+		onCommand("/gdg_policy_fr") { msg, _ -> bot.sendMessage(msg.chat.id, POLICY_MESSAGE_FR) }
+		onCommand("/gdg_about_en") { msg, _ -> bot.sendMessage(msg.chat.id, GDG_ABOUT_MESSAGE_EN) }
+		onCommand("/gdg_about_fr") { msg, _ -> bot.sendMessage(msg.chat.id, GDG_ABOUT_MESSAGE_FR) }
+	}
 }
